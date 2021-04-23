@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorExample", "MediatorExample\MediatorExample.csproj", "{FB1BD22E-8DDF-49E8-96CE-A4C1A0E4FDE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorExample.Application", "MediatorExample.Application\MediatorExample.Application.csproj", "{740EBB73-9932-4FCF-916D-1A3081590AF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorExample.Data", "MediatorExample.Data\MediatorExample.Data.csproj", "{8CFBD220-567E-47C0-B16E-2164AC644D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorExample.Domain", "MediatorExample.Domain\MediatorExample.Domain.csproj", "{1F4DF746-5C19-45D7-8E6C-335765393F94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{FB1BD22E-8DDF-49E8-96CE-A4C1A0E4FDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB1BD22E-8DDF-49E8-96CE-A4C1A0E4FDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB1BD22E-8DDF-49E8-96CE-A4C1A0E4FDE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740EBB73-9932-4FCF-916D-1A3081590AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740EBB73-9932-4FCF-916D-1A3081590AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740EBB73-9932-4FCF-916D-1A3081590AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740EBB73-9932-4FCF-916D-1A3081590AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFBD220-567E-47C0-B16E-2164AC644D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFBD220-567E-47C0-B16E-2164AC644D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFBD220-567E-47C0-B16E-2164AC644D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFBD220-567E-47C0-B16E-2164AC644D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4DF746-5C19-45D7-8E6C-335765393F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4DF746-5C19-45D7-8E6C-335765393F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4DF746-5C19-45D7-8E6C-335765393F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4DF746-5C19-45D7-8E6C-335765393F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
