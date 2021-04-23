@@ -4,6 +4,7 @@ using MediatorExample.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,29 +20,29 @@ namespace MediatorExample.Data.Repository
             _dbProduct = _ediatorExampleDataContext.Product;
         }
 
-        public async Task<int> AddPrdouct(Product product)
+        public async Task AddPrdouct(Product product)
         {
-            throw new NotImplementedException();
+             await _dbProduct.AddAsync(product);
         }
 
-        public async Task<int> DeleteProduct(Guid Id)
+        public void DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            _dbProduct.Remove(product);
         }
 
         public async Task<List<Product>> GetAllProduct()
         {
-            throw new NotImplementedException();
+            return await _dbProduct.ToListAsync();
         }
 
-        public async Task<Product> GetProductById()
+        public async Task<Product> GetProductById(Guid Id)
         {
-            throw new NotImplementedException();
+            return await _dbProduct.FindAsync(Id);
         }
 
-        public async Task<int> UpdateProduct(Product product)
+        public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _dbProduct.Update(product);
         }
     }
 }

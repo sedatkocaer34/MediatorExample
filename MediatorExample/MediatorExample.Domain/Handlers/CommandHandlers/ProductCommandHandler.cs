@@ -1,5 +1,6 @@
 ﻿using MediatorExample.Domain.Command.Request;
 using MediatorExample.Domain.Command.Response;
+using MediatorExample.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,14 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
         IRequestHandler<ProductUpdateCommand, ProductUpdateResponse>,
         IRequestHandler<ProductRemoveCommand, ProductRemoveResponse>
     {
+
+        private IProductRepository _productRepository;
+
+        public ProductCommandHandler(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
         public async Task<ProductAddResponse> Handle(ProductAddCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

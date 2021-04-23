@@ -8,14 +8,14 @@ namespace MediatorExample.Domain.Interfaces
 {
     public interface IProductRepository
     {
-        Task<int> AddPrdouct(Product product);
+        Task AddPrdouct(Product product);
 
-        Task<int> UpdateProduct(Product product);
+        void UpdateProduct(Product product);
 
-        Task<int> DeleteProduct(Guid Id);
+        void DeleteProduct(Product product);
 
         Task<List<Product>> GetAllProduct();
 
-        Task<Product> GetProductById();
+        Task<Product> GetProductById(Guid Id);
     }
 }
