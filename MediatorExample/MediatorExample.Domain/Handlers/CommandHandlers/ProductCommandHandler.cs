@@ -27,12 +27,12 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
             throw new NotImplementedException();
         }
 
-        public Task<ProductUpdateResponse> Handle(ProductUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<ProductUpdateResponse> Handle(ProductUpdateCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ProductRemoveResponse> Handle(ProductRemoveCommand request, CancellationToken cancellationToken)
+        public async Task<ProductRemoveResponse> Handle(ProductRemoveCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

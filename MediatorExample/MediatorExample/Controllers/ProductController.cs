@@ -1,4 +1,6 @@
-﻿using MediatorExample.Domain.Command.Request;
+﻿using MediatorExample.Application.Interfaces;
+using MediatorExample.Domain.Command.Request;
+using MediatorExample.Domain.Queries.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,33 +14,46 @@ namespace MediatorExample.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private IProductService _productService;
+
+        public ProductController(IProductService productService)
+        {
+            _productService = productService;
+        }
 
         [Route("AddProduct")]
         [HttpPost]
-        public IActionResult AddProduct(ProductAddCommand productAddCommand)
+        public async Task<IActionResult> AddProduct(ProductAddCommand productAddCommand)
         {
-            return Ok();
+            return Ok(await _productService.AddProduct(productAddCommand));
         }
 
         [Route("UpdateProduct")]
         [HttpPut]
-        public IActionResult UpdateProduct()
+        public async Task<IActionResult> UpdateProduct(ProductUpdateCommand productUpdateCommand)
         {
-            return Ok();
+            return Ok(await _productService.UpdateProduct(productUpdateCommand));
         }
 
         [Route("RemoveProduct")]
         [HttpDelete]
-        public IActionResult RemoveProduct()
+        public async Task<IActionResult> RemoveProduct(ProductRemoveCommand productRemoveCommand)
         {
-            return Ok();
+            return Ok(await _productService.RemoveProduct(productRemoveCommand));
         }
 
         [Route("GetAllProduct")]
         [HttpGet]
-        public IActionResult GetAllProduct()
+        public async Task<IActionResult> GetAllProduct(GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            return Ok();
+            return Ok(await _productService.GetAllProduct(getAllProductQueryRequest));
+        }
+
+        [Route("GetProduct")]
+        [HttpGet]
+        public async Task<IActionResult> GetProduct(GetByIdProductQueryRequest getByIdProductQueryRequest)
+        {
+            return Ok(await _productService.GetByIdProduct(getByIdProductQueryRequest));
         }
     }
 }
