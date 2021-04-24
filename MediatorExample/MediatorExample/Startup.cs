@@ -31,6 +31,7 @@ namespace MediatorExample
             services.AddDatabaseContext(Configuration);
             services.AddMediatR(typeof(Startup));
             services.AddServices();
+            services.AddAutoMapperConfig();
             services.AddMediatrService();
         }
 

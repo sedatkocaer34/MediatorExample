@@ -1,4 +1,5 @@
-﻿using MediatorExample.Domain.Interfaces;
+﻿using AutoMapper;
+using MediatorExample.Domain.Interfaces;
 using MediatorExample.Domain.Queries.Request;
 using MediatorExample.Domain.Queries.Response;
 using MediatR;
@@ -14,20 +15,22 @@ namespace MediatorExample.Domain.Handlers.QueryHandlers
         IRequestHandler<GetByIdProductQueryRequest, GetByIdProductQueryResponse>
     {
         private IProductRepository _productRepository;
+        private IMapper _mapper;
 
-        public ProductQueryHandler(IProductRepository productRepository)
+        public ProductQueryHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public async Task<GetByIdProductQueryResponse> Handle(GetByIdProductQueryRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<GetByIdProductQueryResponse>(await _productRepository.GetProductById(request.Id));
         }
 
         public async Task<List<GetAllProductQueryResponse>> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<GetAllProductQueryResponse>>(await _productRepository.GetAllProduct());
         }
     }
 }

@@ -31,8 +31,10 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
                 response.isSuccess = false;
                 return response;
             }
-            await _productRepository.AddPrdouct(new Product(Guid.NewGuid(), request.Name, request.Price, request.Quantity));
+            var product = new Product(Guid.NewGuid(), request.Name, request.Price, request.Quantity);
+            await _productRepository.AddPrdouct(product);
             response.isSuccess = true;
+            response.Id = product.Id;
             return response;
         }
 
@@ -51,6 +53,8 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
                 return response;
             }
              _productRepository.UpdateProduct(new Product(request.Id,request.Name,request.Price,request.Quantity));
+            response.isSuccess = true;
+            response.Id = checkProduct.Id;
             return response;
         }
 
@@ -69,6 +73,7 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
                 return response;
             }
             _productRepository.DeleteProduct(checkProduct);
+            response.isSuccess = true;
             return response;
         }
     }

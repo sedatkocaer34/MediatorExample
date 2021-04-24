@@ -22,12 +22,14 @@ namespace MediatorExample.Data.Repository
 
         public async Task AddPrdouct(Product product)
         {
-             await _dbProduct.AddAsync(product);
+            await _dbProduct.AddAsync(product);
+           _ediatorExampleDataContext.SaveChanges();
         }
 
         public void DeleteProduct(Product product)
         {
             _dbProduct.Remove(product);
+            _ediatorExampleDataContext.SaveChanges();
         }
 
         public async Task<List<Product>> GetAllProduct()
@@ -43,6 +45,7 @@ namespace MediatorExample.Data.Repository
         public void UpdateProduct(Product product)
         {
             _dbProduct.Update(product);
+            _ediatorExampleDataContext.SaveChanges();
         }
     }
 }
