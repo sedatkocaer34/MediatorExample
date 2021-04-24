@@ -1,5 +1,6 @@
 ﻿using MediatorExample.Domain.Command.Request;
 using MediatorExample.Domain.Command.Response;
+using MediatorExample.Domain.Domain;
 using MediatorExample.Domain.Interfaces;
 using MediatR;
 using System;
@@ -24,17 +25,51 @@ namespace MediatorExample.Domain.Handlers.CommandHandlers
 
         public async Task<ProductAddResponse> Handle(ProductAddCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var response = new ProductAddResponse();
+            if (request==null)
+            {
+                response.isSuccess = false;
+                return response;
+            }
+            await _productRepository.AddPrdouct(new Product(Guid.NewGuid(), request.Name, request.Price, request.Quantity));
+            response.isSuccess = true;
+            return response;
         }
 
         public async Task<ProductUpdateResponse> Handle(ProductUpdateCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var response = new ProductUpdateResponse();
+            if (request==null)
+            {
+                response.isSuccess = false;
+                return response;
+            }
+            var checkProduct = await _productRepository.GetProductById(request.Id);
+            if (checkProduct==null)
+            {
+                response.isSuccess = false;
+                return response;
+            }
+             _productRepository.UpdateProduct(new Product(request.Id,request.Name,request.Price,request.Quantity));
+            return response;
         }
 
         public async Task<ProductRemoveResponse> Handle(ProductRemoveCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var response = new ProductRemoveResponse();
+            if (request == null)
+            {
+                response.isSuccess = false;
+                return response;
+            }
+            var checkProduct = await _productRepository.GetProductById(request.Id);
+            if (checkProduct == null)
+            {
+                response.isSuccess = false;
+                return response;
+            }
+            _productRepository.DeleteProduct(checkProduct);
+            return response;
         }
     }
 }
