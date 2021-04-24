@@ -44,14 +44,14 @@ namespace MediatorExample.Controllers
 
         [Route("GetAllProduct")]
         [HttpGet]
-        public async Task<IActionResult> GetAllProduct(GetAllProductQueryRequest getAllProductQueryRequest)
+        public async Task<IActionResult> GetAllProduct([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
             return Ok(await _productService.GetAllProduct(getAllProductQueryRequest));
         }
 
         [Route("GetProduct")]
         [HttpGet]
-        public async Task<IActionResult> GetProduct(GetByIdProductQueryRequest getByIdProductQueryRequest)
+        public async Task<IActionResult> GetProduct([FromQuery] GetByIdProductQueryRequest getByIdProductQueryRequest)
         {
             return Ok(await _productService.GetByIdProduct(getByIdProductQueryRequest));
         }

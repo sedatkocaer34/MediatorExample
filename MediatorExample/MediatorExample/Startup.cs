@@ -30,7 +30,8 @@ namespace MediatorExample
             services.AddControllers();
             services.AddDatabaseContext(Configuration);
             services.AddMediatR(typeof(Startup));
-            
+            services.AddServices();
+            services.AddMediatrService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
